@@ -27,7 +27,7 @@ export class AppComponent {
       console.log('new version is', event.current);
     });
     // Forzar la Comprobación de versiones
-    interval(6 * 60 * 60).subscribe(() => swu.checkForUpdate());
+    // interval(6 * 60 * 60).subscribe(() => swu.checkForUpdate());
   }
   muestraUpdate(evento) {
     // Debería ser visual con una alerta
