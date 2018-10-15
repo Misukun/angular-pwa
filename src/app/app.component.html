@@ -3,4 +3,9 @@
   <h1>
     {{ title }}!
   </h1>
+  <p><button (click)="cogeDatos()">Coge Datos</button></p>
 </div>
+
+<ul>
+  <li *ngFor = "let item of datos">{{item}}</li>
+</ul>

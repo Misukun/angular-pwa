@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {SwUpdate} from '@angular/service-worker';
+import {RandomDataService} from './random-data.service';
 import { interval } from 'rxjs';
 
 @Component({
@@ -9,7 +10,9 @@ import { interval } from 'rxjs';
 })
 export class AppComponent {
   title = 'app';
-  constructor(private swu: SwUpdate) {
+  datos: number[];
+  constructor(private swu: SwUpdate, private rds: RandomDataService) {
+    this.datos = [];
     // Comprobación de versiones disponibles
     swu.available.subscribe(event => {
       console.log('current version is', event.current);
@@ -32,5 +35,19 @@ export class AppComponent {
   muestraUpdate(evento) {
     // Debería ser visual con una alerta
     console.log(evento);
+  }
+  cogeDatos() {
+    this.rds.fetchData().subscribe(
+      data => {
+        this.datos = data
+          .split('\n')
+          .filter(n => !!n)
+          .map(n => parseInt(n, 10));
+        console.log(this.datos);
+      },
+      err => {
+        console.error(err);
+      },
+    );
   }
 }

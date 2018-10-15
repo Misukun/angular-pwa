@@ -20,5 +20,16 @@
         "/assets/**"
       ]
     }
-  }]
+  }],
+  "dataGroups": [
+    {
+      "name": "random.org",
+      "urls": ["https://www.random.org/**"],
+      "cacheConfig": {
+        "maxSize": 3,
+        "maxAge": "7d",
+        "strategy": "performance"
+      }
+    }
+  ]
 }
